@@ -1,1 +1,3 @@
 pennylane
+pennylane-lightning
+pennylane-lightning-gpu
