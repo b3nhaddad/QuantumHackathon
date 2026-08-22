@@ -39,7 +39,7 @@ def with_readout_noise(gates, channel=bit_flip, p: float = 0.0, wires=(0, 1)):
 
 
 if __name__ == "__main__":
-    n = 3
+    n = 13
     dev = noisy_device(wires=2)
     questions = question_order(n)
     circuits = build_circuits(n, strategy_angle(n))
