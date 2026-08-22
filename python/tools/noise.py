@@ -1,4 +1,13 @@
+import sys
+from pathlib import Path
+
 import pennylane as qml
+
+# solution.py is a sibling of this file's parent (python/), not of tools/,
+# so it isn't importable by name until that directory is on sys.path.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from solution import build_circuits, is_win, question_order, strategy_angle
 
 # Noise needs density matrices, not statevectors, so this device is fixed
 # regardless of what load.get_device picked for the noiseless run.
@@ -30,18 +39,28 @@ def with_readout_noise(gates, channel=bit_flip, p: float = 0.0, wires=(0, 1)):
 
 
 if __name__ == "__main__":
+    n = 3
     dev = noisy_device(wires=2)
-
-    def bell_pair():
-        qml.Hadamard(wires=0)
-        qml.CNOT(wires=[0, 1])
+    questions = question_order(n)
+    circuits = build_circuits(n, strategy_angle(n))
 
     for p in (0.0, 0.01, 0.05, 0.1):
-        noisy = with_readout_noise(bell_pair, bit_flip, p)
+        win_rates = []
+        for (x, y), gates in zip(questions, circuits):
+            noisy = with_readout_noise(gates, bit_flip, p)
 
-        @qml.qnode(dev)
-        def circuit():
-            noisy()
-            return qml.probs(wires=[0, 1])
+            @qml.qnode(dev)
+            def circuit():
+                noisy()
+                return qml.probs(wires=[0, 1])
 
-        print(f"p={p:.2f}  probs={circuit()}")
+            probs = circuit()
+            win_rates.append(sum(
+                probs[2 * a + b]
+                for a in (0, 1)
+                for b in (0, 1)
+                if is_win(x, y, a, b)
+            ))
+
+        print(f"p={p:.2f}  win rate={sum(win_rates) / len(win_rates):.4f}")
+
