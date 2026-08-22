@@ -31,12 +31,7 @@ def get_device(wires: int, shots=None):
 
     raise RuntimeError("No usable PennyLane device found.")
 
-# 1. Define a device with 1 qubit (wire)
+# 1. Define a device with 2 qubit (wire)
 
-dev = get_device(wires=4)
+dev = get_device(wires=2)
 
-# 2. Define the quantum circuit using a QNode
-@qml.qnode(dev)
-def circuit(theta):
-    qml.RY(theta, wires=0)
-    return qml.expval(qml.PauliZ(0))

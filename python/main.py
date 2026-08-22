@@ -1,5 +1,7 @@
 from load import dev #creates q-bit
 
+#global wires = 2
+
 def main():
 
     print()
