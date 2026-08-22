@@ -114,6 +114,18 @@ PUBLISHED_READOUT = {
     "emerald": (0.0013, 0.028, "our probe, 2026-08-20; e1 includes prep error"),
 }
 
+# Published median two-qubit (native CZ) gate error, same figure for both
+# offered devices. Garnet: Abdurakhimov et al., arXiv:2408.12433, Section 4.1,
+# median 2Q fidelity 99.5%. Emerald: the AWS Braket launch note quoted above
+# under PUBLISHED_READOUT, same 99.5% median 2Q fidelity figure. This repo's
+# odd-cycle circuit uses exactly one CNOT (compiled to the native CZ) to
+# prepare the Bell state, so this error is paid once per circuit, independent
+# of n -- unlike readout, which is paid on both wires of every shot. At n=13
+# it is roughly 6x-12x smaller than the combined readout deficit for either
+# device (see `tools/noise.py`), which is why readout is the dominant channel
+# and this is the secondary one.
+GATE_2Q_ERROR = 0.005
+
 # The old Open Quantum device refused fewer than 10 shots server-side, and the
 # floor is kept. [UNVERIFIED: the minimum is unmeasured on the qBraid Garnet
 # route. A dry-run question, not a blocker.]

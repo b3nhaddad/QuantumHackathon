@@ -12,7 +12,7 @@ import pennylane as qml
 # directory is on sys.path.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from game_numbers import PUBLISHED_READOUT
+from game_numbers import GATE_2Q_ERROR, PUBLISHED_READOUT, omega_q
 from solution import N, SHOTS, build_circuits, is_win, question_order, strategy_angle
 
 def build_mathmatical(n: int, theta: float) -> list[Callable[[], None]]:
@@ -65,20 +65,46 @@ def noisy_device(wires: int):
     return qml.device("default.mixed", wires=wires)
 
 
-def bit_flip(p: float, wires):
-    """Symmetric readout error: each wire flips with probability p either way."""
-    for wire in wires:
-        qml.BitFlip(p, wires=wire)
+_PAULI = {
+    "I": np.eye(2, dtype=complex),
+    "X": np.array([[0, 1], [1, 0]], dtype=complex),
+    "Y": np.array([[0, -1j], [1j, 0]], dtype=complex),
+    "Z": np.array([[1, 0], [0, -1]], dtype=complex),
+}
 
 
-def depolarizing(p: float, wires):
-    for wire in wires:
-        qml.DepolarizingChannel(p, wires=wire)
+def two_qubit_depolarizing_kraus(p: float) -> list[np.ndarray]:
+    """Kraus operators for the standard 2-qubit depolarizing channel.
+
+    rho -> (1 - p) rho + p * I/4: with probability p the two-qubit state is
+    replaced by the maximally mixed state, otherwise it is untouched. Built
+    from all 16 two-qubit Pauli strings P_i = P_a (x) P_b, using the identity
+    (1/16) sum_i P_i rho P_i^dagger = I/4 for the 16-element Pauli basis on two
+    qubits. That gives weight p/16 on each of the 15 non-identity strings and
+    weight (1 - p) + p/16 = 1 - 15p/16 on the identity string, which is a
+    proper CPTP map (weights sum to 1, and it reduces to no-op at p = 0).
+    """
+    labels = [a + b for a in "IXYZ" for b in "IXYZ"]
+    kraus = []
+    for label in labels:
+        weight = (1.0 - p) + p / 16.0 if label == "II" else p / 16.0
+        op = np.kron(_PAULI[label[0]], _PAULI[label[1]])
+        kraus.append(math.sqrt(weight) * op)
+    return kraus
 
 
-def amplitude_damping(gamma: float, wires):
-    for wire in wires:
-        qml.AmplitudeDamping(gamma, wires=wire)
+def two_qubit_gate_error(p: float, wires):
+    """The circuit's one CNOT, run through a 2-qubit depolarizing channel.
+
+    `game_numbers.GATE_2Q_ERROR` is the median CZ/CNOT gate error published
+    for both offered devices (99.5% fidelity). The channel is unitarily
+    invariant -- conjugating (1-p) rho + p I/4 by any subsequent unitary on
+    the same two wires gives back the same channel applied to the rotated
+    state -- so applying it once, anywhere between the CNOT and the
+    measurement, is exact for this circuit (CNOT then two single-qubit RYs),
+    not an approximation of splicing it in immediately after the gate.
+    """
+    qml.QubitChannel(two_qubit_depolarizing_kraus(p), wires=list(wires))
 
 
 def asymmetric_bit_flip(e0: float, e1: float, wires):
@@ -87,7 +113,8 @@ def asymmetric_bit_flip(e0: float, e1: float, wires):
     Kraus form of the channel `game_numbers.delta_from_readout_asym` derives
     its formulas for: K0 leaves each basis state alone with its own survival
     amplitude, K1 carries |0> to |1> at rate e0, K2 carries |1> to |0> at rate
-    e1. Reduces to `bit_flip(p, wires)` exactly when e0 == e1 == p.
+    e1. Reduces to a symmetric bit flip of probability p on each wire (a
+    `qml.BitFlip(p, wires=wire)`) exactly when e0 == e1 == p.
     """
     k0 = np.array([[math.sqrt(1.0 - e0), 0.0], [0.0, math.sqrt(1.0 - e1)]])
     k1 = np.array([[0.0, 0.0], [math.sqrt(e0), 0.0]])
@@ -96,13 +123,27 @@ def asymmetric_bit_flip(e0: float, e1: float, wires):
         qml.QubitChannel([k0, k1, k2], wires=wire)
 
 
+def device_channel(gate_p: float, e0: float, e1: float, wires):
+    """The two error channels this device model carries, in order: the 2Q
+    gate error on the circuit's one CNOT, then asymmetric readout error.
+
+    No other channel is applied. Coherent gate error, 1Q gate error and
+    T1/T2 relaxation are all left out because none of them is a published
+    figure for these devices, and the two channels here already dominate: at
+    n=13, readout alone accounts for nearly all of the predicted deficit, and
+    the 2Q gate error is a distant second, roughly 6x-12x smaller. See
+    `game_numbers.GATE_2Q_ERROR` and `game_numbers.PUBLISHED_READOUT`.
+    """
+    two_qubit_gate_error(gate_p, wires)
+    asymmetric_bit_flip(e0, e1, wires)
+
+
 def with_readout_noise(gates, channel, wires=(0, 1)):
     """Wrap a bare gate function with a noise channel applied after it.
 
     `channel` is a callable of `wires` alone, already bound to its noise
-    parameters (`functools.partial(bit_flip, p)`,
-    `functools.partial(asymmetric_bit_flip, e0, e1)`, ...), so one call site
-    works for every channel regardless of how many parameters it takes.
+    parameters (`functools.partial(device_channel, gate_p, e0, e1)`), so one
+    call site works regardless of how many parameters the channel takes.
     """
     def circuit():
         gates()
@@ -136,25 +177,32 @@ if __name__ == "__main__":
     dev = noisy_device(wires=2)
     questions = question_order(n)
     circuits = []
-    circuits.append([build_circuits(n, strategy_angle(n)),"precomputed"])
-    circuits.append([ build_mathmatical(n, strategy_angle(n)),"mathimatical"])
+    circuits.append([build_circuits(n, strategy_angle(n)), "precomputed"])
+    circuits.append([build_mathmatical(n, strategy_angle(n)), "mathimatical"])
 
-    symmetric_channels = {
-        "bit_flip": bit_flip,
-        "depolarizing": depolarizing,
-        "amplitude_damping": amplitude_damping,
-    }
+    ideal = omega_q(n)
 
     for circuit in circuits:
-        for name, channel_fn in symmetric_channels.items():
-            for p in (0.0, 0.01, 0.05, 0.1):
-                rate = game_win_rate(dev, questions, circuit[0], partial(channel_fn, p))
-                print(f"{name:<18} p={p:.2f}  win rate={rate:.4f}")
         print(circuit[1])
+        print(f"omega_q(n={n}) = {ideal:.4f}  (noiseless quantum win rate)")
+        print(f"2Q gate error (both devices): {GATE_2Q_ERROR:.4f}")
         print()
-        print("asymmetric readout, PUBLISHED_READOUT (e0, e1):")
+        print("device model: one 2Q-gate-error hit on the CNOT + asymmetric readout")
+        rates = {}
         for qpu, (e0, e1, source) in PUBLISHED_READOUT.items():
-            rate = game_win_rate(dev, questions, circuit[0], partial(asymmetric_bit_flip, e0, e1))
-            print(f"{qpu:<10} e0={e0:.4f} e1={e1:.4f}  win rate={rate:.4f}  ({source})")
+            channel = partial(device_channel, GATE_2Q_ERROR, e0, e1)
+            rate = game_win_rate(dev, questions, circuit[0], channel)
+            rates[qpu] = rate
+            deficit = ideal - rate
+            print(
+                f"{qpu:<10} e0={e0:.4f} e1={e1:.4f}  win rate={rate:.4f}  "
+                f"deficit={deficit:.4f}  ({source})"
+            )
+        low, high = min(rates.values()), max(rates.values())
+        print(
+            f"predicted win-rate range across devices: [{low:.4f}, {high:.4f}] "
+            f"(deficit range [{ideal - high:.4f}, {ideal - low:.4f}])"
+        )
+        print()
 
 
