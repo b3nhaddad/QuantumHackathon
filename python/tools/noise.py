@@ -2,6 +2,7 @@ import math
 import sys
 from functools import partial
 from pathlib import Path
+from typing import Callable
 
 import numpy as np
 import pennylane as qml
@@ -13,6 +14,46 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from game_numbers import PUBLISHED_READOUT
 from solution import N, SHOTS, build_circuits, is_win, question_order, strategy_angle
+
+def build_mathmatical(n: int, theta: float) -> list[Callable[[], None]]:
+    # theta = pi / (4n)
+    #
+    # The optimal odd-cycle strategy uses:
+    #
+    #   Alice(x) = x * (pi - pi/n)
+    #   Bob(y)   = y * (pi - pi/n) + pi/(2n)
+    #
+    # Since the template gives us theta:
+    #
+    #   pi/n    = 4 theta
+    #   pi/(2n) = 2 theta
+
+    step = math.pi - 4.0 * theta
+
+    def alice_angle(x: int) -> float:
+        return x * step
+
+    def bob_angle(y: int) -> float:
+        return y * step + 2.0 * theta
+
+    def gates_for(x: int, y: int) -> Callable[[], None]:
+        angle_a = alice_angle(x)
+        angle_b = bob_angle(y)
+
+        def circuit() -> None:
+            qml.Hadamard(wires=0)
+            qml.CNOT(wires=[0, 1])
+
+            qml.RY(angle_a, wires=0)
+            qml.RY(angle_b, wires=1)
+
+        return circuit
+
+    return [
+        gates_for(x, y)
+        for x, y in question_order(n)
+    ]
+
 
 # Noise needs density matrices, not statevectors, so this device is always
 # "default.mixed" regardless of what solution.py's own DEVICE parameter says:
@@ -94,7 +135,9 @@ if __name__ == "__main__":
     n = N
     dev = noisy_device(wires=2)
     questions = question_order(n)
-    circuits = build_circuits(n, strategy_angle(n))
+    circuits = []
+    circuits.append([build_circuits(n, strategy_angle(n)),"precomputed"])
+    circuits.append([ build_mathmatical(n, strategy_angle(n)),"mathimatical"])
 
     symmetric_channels = {
         "bit_flip": bit_flip,
@@ -102,13 +145,16 @@ if __name__ == "__main__":
         "amplitude_damping": amplitude_damping,
     }
 
-    for name, channel_fn in symmetric_channels.items():
-        for p in (0.0, 0.01, 0.05, 0.1):
-            rate = game_win_rate(dev, questions, circuits, partial(channel_fn, p))
-            print(f"{name:<18} p={p:.2f}  win rate={rate:.4f}")
+    for circuit in circuits:
+        for name, channel_fn in symmetric_channels.items():
+            for p in (0.0, 0.01, 0.05, 0.1):
+                rate = game_win_rate(dev, questions, circuit[0], partial(channel_fn, p))
+                print(f"{name:<18} p={p:.2f}  win rate={rate:.4f}")
+        print(circuit[1])
+        print()
+        print("asymmetric readout, PUBLISHED_READOUT (e0, e1):")
+        for qpu, (e0, e1, source) in PUBLISHED_READOUT.items():
+            rate = game_win_rate(dev, questions, circuit[0], partial(asymmetric_bit_flip, e0, e1))
+            print(f"{qpu:<10} e0={e0:.4f} e1={e1:.4f}  win rate={rate:.4f}  ({source})")
 
-    print()
-    print("asymmetric readout, PUBLISHED_READOUT (e0, e1):")
-    for qpu, (e0, e1, source) in PUBLISHED_READOUT.items():
-        rate = game_win_rate(dev, questions, circuits, partial(asymmetric_bit_flip, e0, e1))
-        print(f"{qpu:<10} e0={e0:.4f} e1={e1:.4f}  win rate={rate:.4f}  ({source})")
+

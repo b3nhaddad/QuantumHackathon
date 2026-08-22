@@ -89,8 +89,28 @@ class ProbeDesign:
 
 
 QPU_READOUT = {
-    # Values published/recorded by the challenge repository. These are priors,
-    # not measured device deficits.
+    # Values published/recorded by the challenge repository (see
+    # game_numbers.PUBLISHED_READOUT for sources). These are priors, not
+    # measured device deficits. (e0, e1): e0 is P(read 0 as 1), e1 is P(read
+    # 1 as 0).
+    #   emerald: asymmetric (0.0013, 0.0280) -- e1 is an upper estimate, it
+    #   folds in state-prep error.
+    #   garnet: symmetric (0.0300, 0.0300) -- one published median for
+    #   simultaneous whole-device readout, so e0 == e1.
+    #
+    # No T1/T2 thermal-relaxation channel is modeled here on purpose: neither
+    # IQM nor qBraid publishes benchmarked coherence times for these
+    # processors, and it wouldn't be the binding term anyway -- the game
+    # circuit is 4 gates deep (H, CNOT, one RY per player), far shorter than
+    # any realistic qubit lifetime. Whatever physical channel actually causes
+    # the loss (readout, thermal relaxation, gate depolarization) collapses to
+    # the same flat per-question deficit delta = omega_q(n) - omega_measured,
+    # and under all of them the optimal odd-cycle angles are unchanged -- there
+    # is no strategy adjustment to make against noise, only delta to size a run
+    # against. See readout_delta_formula below and
+    # game_numbers.delta_from_readout_asym for the prediction route, or run a
+    # cheap low-n calibration sweep to measure delta directly if you want the
+    # empirical number instead of the predicted one.
     "emerald": (0.0013, 0.0280),
     "garnet": (0.0300, 0.0300),
 }
