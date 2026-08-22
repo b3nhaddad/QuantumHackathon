@@ -1,0 +1,1143 @@
+{
+  "schemaVersion": 1,
+  "mode": "run1",
+  "qpu": "emerald",
+  "budget": 3.54,
+  "fit": null,
+  "deviceParameterCenter": {
+    "relative_offset": 0.0,
+    "scale_a": 0.0,
+    "scale_b": 0.0,
+    "yerr_a": 0.0,
+    "yerr_b": 0.0,
+    "visibility": 0.9950000047683716,
+    "e0": 0.0013000000035390258,
+    "e1": 0.02800000086426735
+  },
+  "deviceParameterSigma": {
+    "relative_offset": 0.07999999821186066,
+    "scale_a": 0.029999999329447746,
+    "scale_b": 0.029999999329447746,
+    "yerr_a": 0.05000000074505806,
+    "yerr_b": 0.05000000074505806,
+    "visibility": 0.014999999664723873,
+    "e0": 0.009999999776482582,
+    "e1": 0.014999999664723873
+  },
+  "winners": [
+    {
+      "family": "affine",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": 0.0,
+        "alice_linear": 0.0,
+        "bob_linear": 0.0
+      },
+      "nominalInfoNats": 2.913480758666992,
+      "nominalApproxPower": 0.9999947547912598,
+      "robustMedianPower": 0.9998509883880615,
+      "robustP10Power": 0.9294382333755493,
+      "robustP01Power": 0.46355724334716797,
+      "fractionDevicesPowerAtLeast90": 0.9198646545410156,
+      "robustMeanWin": 0.8995175361633301,
+      "score": 2.7847443651250505,
+      "exactCenterMeanWin": 0.9059698463822721,
+      "exactCenterCertificationPower": 0.9999858232504747,
+      "aliceAngles": [
+        0.0,
+        2.0943951023931957,
+        4.188790204786391
+      ],
+      "bobAngles": [
+        0.5235987755982988,
+        2.6179938779914944,
+        4.712388980384691
+      ]
+    },
+    {
+      "family": "quadratic",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": 0.0,
+        "alice_linear": 0.0,
+        "alice_quadratic": 0.0,
+        "bob_linear": 0.0,
+        "bob_quadratic": 0.0
+      },
+      "nominalInfoNats": 2.913480758666992,
+      "nominalApproxPower": 0.9999947547912598,
+      "robustMedianPower": 0.9998509883880615,
+      "robustP10Power": 0.9294382333755493,
+      "robustP01Power": 0.46355724334716797,
+      "fractionDevicesPowerAtLeast90": 0.9198646545410156,
+      "robustMeanWin": 0.8995175361633301,
+      "score": 2.7767443651250505,
+      "exactCenterMeanWin": 0.9059698463822721,
+      "exactCenterCertificationPower": 0.9999858232504747,
+      "aliceAngles": [
+        0.0,
+        2.0943951023931957,
+        4.188790204786391
+      ],
+      "bobAngles": [
+        0.5235987755982988,
+        2.6179938779914944,
+        4.712388980384691
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": 0.0,
+        "alice_linear": 0.0,
+        "alice_sin1": 0.0,
+        "alice_cos1": 0.0,
+        "bob_linear": 0.0,
+        "bob_sin1": 0.0,
+        "bob_cos1": 0.0
+      },
+      "nominalInfoNats": 2.913480758666992,
+      "nominalApproxPower": 0.9999947547912598,
+      "robustMedianPower": 0.9998509883880615,
+      "robustP10Power": 0.9294382333755493,
+      "robustP01Power": 0.46355724334716797,
+      "fractionDevicesPowerAtLeast90": 0.9198646545410156,
+      "robustMeanWin": 0.8995175361633301,
+      "score": 2.7687443651250505,
+      "exactCenterMeanWin": 0.9059698463822721,
+      "exactCenterCertificationPower": 0.9999858232504747,
+      "aliceAngles": [
+        0.0,
+        2.0943951023931957,
+        4.188790204786391
+      ],
+      "bobAngles": [
+        0.5235987755982988,
+        2.6179938779914944,
+        4.712388980384691
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.24394550919532776,
+        "alice_linear": -0.07794079184532166,
+        "alice_sin1": -0.17430832982063293,
+        "alice_cos1": 0.16755859553813934,
+        "bob_linear": -0.10048225522041321,
+        "bob_sin1": -0.11898750811815262,
+        "bob_cos1": 0.16370998322963715
+      },
+      "nominalInfoNats": 3.5778613090515137,
+      "nominalApproxPower": 0.9568992257118225,
+      "robustMedianPower": 0.8652776479721069,
+      "robustP10Power": 0.1504727452993393,
+      "robustP01Power": 0.003576480085030198,
+      "fractionDevicesPowerAtLeast90": 0.4588813781738281,
+      "robustMeanWin": 0.8771770000457764,
+      "score": -64.48983868097096,
+      "exactCenterMeanWin": 0.8833580108609898,
+      "exactCenterCertificationPower": 0.954992041796246,
+      "aliceAngles": [
+        0.12352663278579712,
+        1.7376876083105575,
+        4.056052802290241
+      ],
+      "bobAngles": [
+        0.909763768646013,
+        2.5550654362110126,
+        4.75507069291045
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2705717980861664,
+        "alice_linear": 0.028359591960906982,
+        "alice_sin1": -0.17819465696811676,
+        "alice_cos1": 0.17069441080093384,
+        "bob_linear": -0.11442460119724274,
+        "bob_sin1": -0.1423388570547104,
+        "bob_cos1": 0.14494267106056213
+      },
+      "nominalInfoNats": 3.578366279602051,
+      "nominalApproxPower": 0.9609887599945068,
+      "robustMedianPower": 0.8738289475440979,
+      "robustP10Power": 0.14776872098445892,
+      "robustP01Power": 0.0029628195334225893,
+      "fractionDevicesPowerAtLeast90": 0.46895599365234375,
+      "robustMeanWin": 0.8774886727333069,
+      "score": -64.76566493005163,
+      "exactCenterMeanWin": 0.8836937822756364,
+      "exactCenterCertificationPower": 0.9591053300612588,
+      "aliceAngles": [
+        0.0070489197969436646,
+        1.7194408981966027,
+        4.150837792056791
+      ],
+      "bobAngles": [
+        0.9182519468991869,
+        2.5575393753492754,
+        4.784048008855271
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.24065320193767548,
+        "alice_linear": -0.12119324505329132,
+        "alice_sin1": -0.17301732301712036,
+        "alice_cos1": 0.11878456920385361,
+        "bob_linear": -0.10578414797782898,
+        "bob_sin1": -0.16954076290130615,
+        "bob_cos1": 0.12772879004478455
+      },
+      "nominalInfoNats": 3.5784735679626465,
+      "nominalApproxPower": 0.9542776346206665,
+      "robustMedianPower": 0.8597597479820251,
+      "robustP10Power": 0.14590488374233246,
+      "robustP01Power": 0.003399541834369302,
+      "fractionDevicesPowerAtLeast90": 0.4533195495605469,
+      "robustMeanWin": 0.8769528865814209,
+      "score": -64.96326005772828,
+      "exactCenterMeanWin": 0.8831123003957281,
+      "exactCenterCertificationPower": 0.952377515133405,
+      "aliceAngles": [
+        0.11965121328830719,
+        1.7648388197948268,
+        4.03771547118994
+      ],
+      "bobAngles": [
+        0.8774383145897501,
+        2.5276294762884146,
+        4.809893646002832
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2692181468009949,
+        "alice_linear": -0.0533461719751358,
+        "alice_sin1": -0.15404503047466278,
+        "alice_cos1": 0.12657776474952698,
+        "bob_linear": -0.05477741360664368,
+        "bob_sin1": -0.14499041438102722,
+        "bob_cos1": 0.1435021162033081
+      },
+      "nominalInfoNats": 3.5789694786071777,
+      "nominalApproxPower": 0.9580438137054443,
+      "robustMedianPower": 0.8690249919891357,
+      "robustP10Power": 0.14028972387313843,
+      "robustP01Power": 0.0026389393024146557,
+      "fractionDevicesPowerAtLeast90": 0.4637260437011719,
+      "robustMeanWin": 0.877297580242157,
+      "score": -65.53969881682464,
+      "exactCenterMeanWin": 0.8834563334538701,
+      "exactCenterCertificationPower": 0.9561396530190429,
+      "aliceAngles": [
+        0.045314863324165344,
+        1.763090236900129,
+        4.070952986753801
+      ],
+      "bobAngles": [
+        0.856487378808748,
+        2.555286511131136,
+        4.846034964236092
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.27548372745513916,
+        "alice_linear": -0.06272514164447784,
+        "alice_sin1": -0.16666246950626373,
+        "alice_cos1": 0.10043113678693771,
+        "bob_linear": -0.16608025133609772,
+        "bob_sin1": -0.17064031958580017,
+        "bob_cos1": 0.07672435790300369
+      },
+      "nominalInfoNats": 3.5806949138641357,
+      "nominalApproxPower": 0.9577058553695679,
+      "robustMedianPower": 0.8674198389053345,
+      "robustP10Power": 0.1382562667131424,
+      "robustP01Power": 0.002544173039495945,
+      "fractionDevicesPowerAtLeast90": 0.462066650390625,
+      "robustMeanWin": 0.8772144913673401,
+      "score": -65.74999756078878,
+      "exactCenterMeanWin": 0.8833932541934676,
+      "exactCenterCertificationPower": 0.9558128931024389,
+      "aliceAngles": [
+        0.025414414703845978,
+        1.7621037378222835,
+        4.0824415634707485
+      ],
+      "bobAngles": [
+        0.9041452485649698,
+        2.569594711096364,
+        4.793467265495859
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.26864323019981384,
+        "alice_linear": -0.027841269969940186,
+        "alice_sin1": -0.1671523153781891,
+        "alice_cos1": 0.16478587687015533,
+        "bob_linear": -0.013754814863204956,
+        "bob_sin1": -0.11608116328716278,
+        "bob_cos1": 0.17115262150764465
+      },
+      "nominalInfoNats": 3.5781121253967285,
+      "nominalApproxPower": 0.9563119411468506,
+      "robustMedianPower": 0.8649800419807434,
+      "robustP10Power": 0.13582341372966766,
+      "robustP01Power": 0.002445339225232601,
+      "fractionDevicesPowerAtLeast90": 0.4598846435546875,
+      "robustMeanWin": 0.8771288990974426,
+      "score": -66.00222651016797,
+      "exactCenterMeanWin": 0.8832838850612784,
+      "exactCenterCertificationPower": 0.9544126826942905,
+      "aliceAngles": [
+        0.0583055317401886,
+        1.732922397439311,
+        4.088992532700367
+      ],
+      "bobAngles": [
+        0.8428278270690553,
+        2.5662099460300465,
+        4.847908706175103
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.27084776759147644,
+        "alice_linear": -0.11040836572647095,
+        "alice_sin1": -0.17235149443149567,
+        "alice_cos1": 0.1153944730758667,
+        "bob_linear": -0.2078339010477066,
+        "bob_sin1": -0.17718394100666046,
+        "bob_cos1": -0.009535864926874638
+      },
+      "nominalInfoNats": 3.581925392150879,
+      "nominalApproxPower": 0.9555434584617615,
+      "robustMedianPower": 0.8633193373680115,
+      "robustP10Power": 0.13384412229061127,
+      "robustP01Power": 0.002364558167755604,
+      "fractionDevicesPowerAtLeast90": 0.4580078125,
+      "robustMeanWin": 0.8770530819892883,
+      "score": -66.20671426464446,
+      "exactCenterMeanWin": 0.8832023756158395,
+      "exactCenterCertificationPower": 0.9536499325379527,
+      "aliceAngles": [
+        0.09037895500659943,
+        1.7520132095016367,
+        4.034521491284136
+      ],
+      "bobAngles": [
+        0.857320695514869,
+        2.604739900196259,
+        4.798192689650571
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.28123557567596436,
+        "alice_linear": -0.050390779972076416,
+        "alice_sin1": -0.17603622376918793,
+        "alice_cos1": 0.11001325398683548,
+        "bob_linear": -0.11875726282596588,
+        "bob_sin1": -0.11355313658714294,
+        "bob_cos1": 0.13169105350971222
+      },
+      "nominalInfoNats": 3.580498218536377,
+      "nominalApproxPower": 0.956557035446167,
+      "robustMedianPower": 0.8643628358840942,
+      "robustP10Power": 0.13326135277748108,
+      "robustP01Power": 0.002325064968317747,
+      "fractionDevicesPowerAtLeast90": 0.45941925048828125,
+      "robustMeanWin": 0.8770657777786255,
+      "score": -66.26664580170443,
+      "exactCenterMeanWin": 0.8832494925025226,
+      "exactCenterCertificationPower": 0.9546782524711205,
+      "aliceAngles": [
+        0.019786246120929718,
+        1.746318845791397,
+        4.0952268517533135
+      ],
+      "bobAngles": [
+        0.9146648797719591,
+        2.5944262381107506,
+        4.766743879605721
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.27977558970451355,
+        "alice_linear": -0.03591085970401764,
+        "alice_sin1": -0.14275230467319489,
+        "alice_cos1": 0.17579209804534912,
+        "bob_linear": -0.07081019878387451,
+        "bob_sin1": -0.08824461698532104,
+        "bob_cos1": 0.11200954765081406
+      },
+      "nominalInfoNats": 3.578768253326416,
+      "nominalApproxPower": 0.9570687413215637,
+      "robustMedianPower": 0.8669697046279907,
+      "robustP10Power": 0.13209465146064758,
+      "robustP01Power": 0.0021611086558550596,
+      "fractionDevicesPowerAtLeast90": 0.46222686767578125,
+      "robustMeanWin": 0.8771800994873047,
+      "score": -66.38650517102289,
+      "exactCenterMeanWin": 0.8833289727432435,
+      "exactCenterCertificationPower": 0.9551782513023375,
+      "aliceAngles": [
+        0.07181516289710999,
+        1.7429841362225016,
+        4.048722623503205
+      ],
+      "bobAngles": [
+        0.8463063168852442,
+        2.6254548189618285,
+        4.801883882684182
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.28353410959243774,
+        "alice_linear": 0.041973501443862915,
+        "alice_sin1": -0.13379773497581482,
+        "alice_cos1": 0.17725352942943573,
+        "bob_linear": -0.10761399567127228,
+        "bob_sin1": -0.10820615291595459,
+        "bob_cos1": 0.1579485535621643
+      },
+      "nominalInfoNats": 3.5778870582580566,
+      "nominalApproxPower": 0.9554393291473389,
+      "robustMedianPower": 0.8612989187240601,
+      "robustP10Power": 0.13076026737689972,
+      "robustP01Power": 0.0022561035584658384,
+      "fractionDevicesPowerAtLeast90": 0.4562187194824219,
+      "robustMeanWin": 0.8769175410270691,
+      "score": -66.52616993175806,
+      "exactCenterMeanWin": 0.8831097397416244,
+      "exactCenterCertificationPower": 0.9535751248053156,
+      "aliceAngles": [
+        -0.006487026810646057,
+        1.7481290454243856,
+        4.116242124177191
+      ],
+      "bobAngles": [
+        0.9309283796279543,
+        2.5870773787356307,
+        4.761277039999555
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.27679821848869324,
+        "alice_linear": 0.013282299041748047,
+        "alice_sin1": -0.17184756696224213,
+        "alice_cos1": 0.1284216046333313,
+        "bob_linear": -0.20094025135040283,
+        "bob_sin1": -0.17867036163806915,
+        "bob_cos1": 0.09625718742609024
+      },
+      "nominalInfoNats": 3.5786828994750977,
+      "nominalApproxPower": 0.9529085159301758,
+      "robustMedianPower": 0.8545138239860535,
+      "robustP10Power": 0.13022875785827637,
+      "robustP01Power": 0.002385226543992758,
+      "fractionDevicesPowerAtLeast90": 0.4490470886230469,
+      "robustMeanWin": 0.8766355514526367,
+      "score": -66.58304629553767,
+      "exactCenterMeanWin": 0.882842547451097,
+      "exactCenterCertificationPower": 0.9510655759348366,
+      "aliceAngles": [
+        -0.023259803652763367,
+        1.7429608322643344,
+        4.148286950834976
+      ],
+      "bobAngles": [
+        0.9591953236191385,
+        2.5535313214408752,
+        4.7564523166475094
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.28418052196502686,
+        "alice_linear": -0.05514904856681824,
+        "alice_sin1": -0.14566172659397125,
+        "alice_cos1": 0.12107738852500916,
+        "bob_linear": -0.05254814028739929,
+        "bob_sin1": -0.08247113972902298,
+        "bob_cos1": 0.16540122032165527
+      },
+      "nominalInfoNats": 3.5774569511413574,
+      "nominalApproxPower": 0.9561135768890381,
+      "robustMedianPower": 0.8643938302993774,
+      "robustP10Power": 0.13013875484466553,
+      "robustP01Power": 0.0021346190478652716,
+      "fractionDevicesPowerAtLeast90": 0.4594879150390625,
+      "robustMeanWin": 0.8770706653594971,
+      "score": -66.58944473507619,
+      "exactCenterMeanWin": 0.8832330936212826,
+      "exactCenterCertificationPower": 0.954227635186399,
+      "aliceAngles": [
+        0.034136176109313965,
+        1.7656193915586953,
+        4.057158956564037
+      ],
+      "bobAngles": [
+        0.8836383971898668,
+        2.6059614267287903,
+        4.790652593003367
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2704984247684479,
+        "alice_linear": -0.057798922061920166,
+        "alice_sin1": -0.169986754655838,
+        "alice_cos1": 0.11856608837842941,
+        "bob_linear": -0.06740586459636688,
+        "bob_sin1": -0.14746715128421783,
+        "bob_cos1": 0.1620606780052185
+      },
+      "nominalInfoNats": 3.5912132263183594,
+      "nominalApproxPower": 0.9518648982048035,
+      "robustMedianPower": 0.8549656271934509,
+      "robustP10Power": 0.12859103083610535,
+      "robustP01Power": 0.002292623743414879,
+      "fractionDevicesPowerAtLeast90": 0.44925689697265625,
+      "robustMeanWin": 0.8766947388648987,
+      "score": -66.75060712751484,
+      "exactCenterMeanWin": 0.8828589659512933,
+      "exactCenterCertificationPower": 0.9499896937649037,
+      "aliceAngles": [
+        0.04111579805612564,
+        1.7526499979809287,
+        4.083671873989861
+      ],
+      "bobAngles": [
+        0.8883145305841081,
+        2.5445024521372535,
+        4.826912288405794
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2773672640323639,
+        "alice_linear": -0.0812472254037857,
+        "alice_sin1": -0.16128580272197723,
+        "alice_cos1": 0.16620105504989624,
+        "bob_linear": -0.04086683690547943,
+        "bob_sin1": -0.04032568261027336,
+        "bob_cos1": 0.12976481020450592
+      },
+      "nominalInfoNats": 3.5784718990325928,
+      "nominalApproxPower": 0.9548773765563965,
+      "robustMedianPower": 0.8621212840080261,
+      "robustP10Power": 0.1279754787683487,
+      "robustP01Power": 0.0020450500305742025,
+      "fractionDevicesPowerAtLeast90": 0.4571189880371094,
+      "robustMeanWin": 0.8769606351852417,
+      "score": -66.81339128752454,
+      "exactCenterMeanWin": 0.883097855138047,
+      "exactCenterCertificationPower": 0.9529995529138812,
+      "aliceAngles": [
+        0.1087646484375,
+        1.732933340425068,
+        4.0254364222684735
+      ],
+      "bobAngles": [
+        0.8329140547244661,
+        2.6568720393399783,
+        4.780246435958585
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.28113892674446106,
+        "alice_linear": -0.042281925678253174,
+        "alice_sin1": -0.1399242877960205,
+        "alice_cos1": 0.16821734607219696,
+        "bob_linear": -0.06617483496665955,
+        "bob_sin1": -0.06007874757051468,
+        "bob_cos1": 0.1521042436361313
+      },
+      "nominalInfoNats": 3.5788543224334717,
+      "nominalApproxPower": 0.9543035626411438,
+      "robustMedianPower": 0.8603794574737549,
+      "robustP10Power": 0.1276252567768097,
+      "robustP01Power": 0.0020785292144864798,
+      "fractionDevicesPowerAtLeast90": 0.45529937744140625,
+      "robustMeanWin": 0.8769007921218872,
+      "score": -66.85002982542993,
+      "exactCenterMeanWin": 0.8830587632027115,
+      "exactCenterCertificationPower": 0.9524246573133186,
+      "aliceAngles": [
+        0.0699298083782196,
+        1.7485389781470682,
+        4.043008130537608
+      ],
+      "bobAngles": [
+        0.8824473175733202,
+        2.630481497922041,
+        4.762761208595814
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2701534330844879,
+        "alice_linear": -0.05239357054233551,
+        "alice_sin1": -0.15756112337112427,
+        "alice_cos1": 0.16935065388679504,
+        "bob_linear": -0.002478465437889099,
+        "bob_sin1": -0.08539752662181854,
+        "bob_cos1": 0.17998039722442627
+      },
+      "nominalInfoNats": 3.586859941482544,
+      "nominalApproxPower": 0.9520620703697205,
+      "robustMedianPower": 0.8560358881950378,
+      "robustP10Power": 0.12689495086669922,
+      "robustP01Power": 0.0021222359500825405,
+      "fractionDevicesPowerAtLeast90": 0.4506568908691406,
+      "robustMeanWin": 0.8767363429069519,
+      "score": -66.92583435705622,
+      "exactCenterMeanWin": 0.8828774648513038,
+      "exactCenterCertificationPower": 0.950184277058372,
+      "aliceAngles": [
+        0.0866675078868866,
+        1.7381911234193466,
+        4.053096526246622
+      ],
+      "bobAngles": [
+        0.8411343548028581,
+        2.5891239684466725,
+        4.828953460351685
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.27693071961402893,
+        "alice_linear": -0.020312830805778503,
+        "alice_sin1": -0.17285306751728058,
+        "alice_cos1": 0.17744062840938568,
+        "bob_linear": -0.05673280358314514,
+        "bob_sin1": -0.08264373242855072,
+        "bob_cos1": 0.17184127867221832
+      },
+      "nominalInfoNats": 3.592717170715332,
+      "nominalApproxPower": 0.9530287981033325,
+      "robustMedianPower": 0.8571930527687073,
+      "robustP10Power": 0.1268502026796341,
+      "robustP01Power": 0.0021152289118617773,
+      "fractionDevicesPowerAtLeast90": 0.4521484375,
+      "robustMeanWin": 0.8767651319503784,
+      "score": -66.92935621384984,
+      "exactCenterMeanWin": 0.8829341729476111,
+      "exactCenterCertificationPower": 0.951158661785528,
+      "aliceAngles": [
+        0.05928809940814972,
+        1.7175142807894566,
+        4.090986847560937
+      ],
+      "bobAngles": [
+        0.8906382176606767,
+        2.598967026715711,
+        4.779772469019139
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.28132396936416626,
+        "alice_linear": 0.029605478048324585,
+        "alice_sin1": -0.1735038459300995,
+        "alice_cos1": 0.16750851273536682,
+        "bob_linear": -0.18791519105434418,
+        "bob_sin1": -0.14973105490207672,
+        "bob_cos1": 0.08983445912599564
+      },
+      "nominalInfoNats": 3.5825488567352295,
+      "nominalApproxPower": 0.951999306678772,
+      "robustMedianPower": 0.8529123663902283,
+      "robustP10Power": 0.1254100799560547,
+      "robustP01Power": 0.00211059651337564,
+      "fractionDevicesPowerAtLeast90": 0.4480323791503906,
+      "robustMeanWin": 0.8765697479248047,
+      "score": -67.08037750876697,
+      "exactCenterMeanWin": 0.8827679144836761,
+      "exactCenterCertificationPower": 0.9501604725428225,
+      "aliceAngles": [
+        -0.0027589499950408936,
+        1.7197201231136616,
+        4.1442381800147166
+      ],
+      "bobAngles": [
+        0.9420104104607218,
+        2.584067735829939,
+        4.7498894417300725
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.28452396392822266,
+        "alice_linear": -0.08637259900569916,
+        "alice_sin1": -0.17380569875240326,
+        "alice_cos1": 0.0982305258512497,
+        "bob_linear": -0.15424233675003052,
+        "bob_sin1": -0.12822367250919342,
+        "bob_cos1": 0.07248599082231522
+      },
+      "nominalInfoNats": 3.5823135375976562,
+      "nominalApproxPower": 0.953446090221405,
+      "robustMedianPower": 0.8583500385284424,
+      "robustP10Power": 0.12500062584877014,
+      "robustP01Power": 0.0019860246684402227,
+      "fractionDevicesPowerAtLeast90": 0.4534263610839844,
+      "robustMeanWin": 0.8768094182014465,
+      "score": -67.12116749342682,
+      "exactCenterMeanWin": 0.8829725771682805,
+      "exactCenterCertificationPower": 0.9515736225259456,
+      "aliceAngles": [
+        0.042341142892837524,
+        1.752497707061373,
+        4.061560511333043
+      ],
+      "bobAngles": [
+        0.8925890851347559,
+        2.6129679067849505,
+        4.775210587947112
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2786438465118408,
+        "alice_linear": -0.034905970096588135,
+        "alice_sin1": -0.16377170383930206,
+        "alice_cos1": 0.17111852765083313,
+        "bob_linear": -0.1039547324180603,
+        "bob_sin1": -0.14072106778621674,
+        "bob_cos1": 0.055784501135349274
+      },
+      "nominalInfoNats": 3.5773439407348633,
+      "nominalApproxPower": 0.9526110887527466,
+      "robustMedianPower": 0.8574192523956299,
+      "robustP10Power": 0.12341075390577316,
+      "robustP01Power": 0.001889753737486899,
+      "fractionDevicesPowerAtLeast90": 0.45263671875,
+      "robustMeanWin": 0.87677401304245,
+      "score": -67.28610335994107,
+      "exactCenterMeanWin": 0.8829109856310563,
+      "exactCenterCertificationPower": 0.9507364071124315,
+      "aliceAngles": [
+        0.06670257449150085,
+        1.7276834593659616,
+        4.070833503554363
+      ],
+      "bobAngles": [
+        0.8226599324076288,
+        2.6075555311292042,
+        4.8417319402054115
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2816503345966339,
+        "alice_linear": 0.003225356340408325,
+        "alice_sin1": -0.17849890887737274,
+        "alice_cos1": 0.15258778631687164,
+        "bob_linear": -0.11031915247440338,
+        "bob_sin1": -0.14385445415973663,
+        "bob_cos1": 0.13136819005012512
+      },
+      "nominalInfoNats": 3.5914840698242188,
+      "nominalApproxPower": 0.9514986276626587,
+      "robustMedianPower": 0.8534216284751892,
+      "robustP10Power": 0.12319719046354294,
+      "robustP01Power": 0.0019978643395006657,
+      "fractionDevicesPowerAtLeast90": 0.4483757019042969,
+      "robustMeanWin": 0.8765965700149536,
+      "score": -67.30775008177274,
+      "exactCenterMeanWin": 0.8827757401354689,
+      "exactCenterCertificationPower": 0.9496429869847387,
+      "aliceAngles": [
+        0.008537262678146362,
+        1.7226914523008345,
+        4.129481090305656
+      ],
+      "bobAngles": [
+        0.9061112854211443,
+        2.5685533385148727,
+        4.801792511933417
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.26985523104667664,
+        "alice_linear": -0.07428537309169769,
+        "alice_sin1": -0.15099330246448517,
+        "alice_cos1": 0.14691582322120667,
+        "bob_linear": -0.0364217609167099,
+        "bob_sin1": -0.11769120395183563,
+        "bob_cos1": 0.13974665105342865
+      },
+      "nominalInfoNats": 3.585141897201538,
+      "nominalApproxPower": 0.9495631456375122,
+      "robustMedianPower": 0.8509304523468018,
+      "robustP10Power": 0.1229877695441246,
+      "robustP01Power": 0.0020089882891625166,
+      "fractionDevicesPowerAtLeast90": 0.44568634033203125,
+      "robustMeanWin": 0.8765270709991455,
+      "score": -67.33082025687473,
+      "exactCenterMeanWin": 0.8826587061747097,
+      "exactCenterCertificationPower": 0.9477003157869862,
+      "aliceAngles": [
+        0.08627358078956604,
+        1.7552455395237025,
+        4.036883340296304
+      ],
+      "bobAngles": [
+        0.8346948030917757,
+        2.5811245955638533,
+        4.842945081888869
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2761423587799072,
+        "alice_linear": -0.08576804399490356,
+        "alice_sin1": -0.16654448211193085,
+        "alice_cos1": 0.1626235693693161,
+        "bob_linear": -0.13400810956954956,
+        "bob_sin1": -0.08336000889539719,
+        "bob_cos1": 0.0733749195933342
+      },
+      "nominalInfoNats": 3.5825910568237305,
+      "nominalApproxPower": 0.9508205652236938,
+      "robustMedianPower": 0.8527041673660278,
+      "robustP10Power": 0.12256588786840439,
+      "robustP01Power": 0.0019696694798767567,
+      "fractionDevicesPowerAtLeast90": 0.44782257080078125,
+      "robustMeanWin": 0.8765884041786194,
+      "score": -67.37407128112557,
+      "exactCenterMeanWin": 0.8827347178503205,
+      "exactCenterCertificationPower": 0.9489604855689536,
+      "aliceAngles": [
+        0.11032043397426605,
+        1.730780385949529,
+        4.027870949085931
+      ],
+      "bobAngles": [
+        0.8690529841511362,
+        2.64718571222167,
+        4.7519564757715385
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2906990647315979,
+        "alice_linear": -0.06602704524993896,
+        "alice_sin1": -0.16668561100959778,
+        "alice_cos1": 0.05910756438970566,
+        "bob_linear": -0.138264462351799,
+        "bob_sin1": -0.14507336914539337,
+        "bob_cos1": 0.1088712140917778
+      },
+      "nominalInfoNats": 3.577012062072754,
+      "nominalApproxPower": 0.9519854784011841,
+      "robustMedianPower": 0.8543617725372314,
+      "robustP10Power": 0.12119591236114502,
+      "robustP01Power": 0.0018686020048335195,
+      "fractionDevicesPowerAtLeast90": 0.4496002197265625,
+      "robustMeanWin": 0.8766264915466309,
+      "score": -67.51564027255759,
+      "exactCenterMeanWin": 0.8828008533564929,
+      "exactCenterCertificationPower": 0.9501332298139186,
+      "aliceAngles": [
+        -0.020214922726154327,
+        1.775137814252901,
+        4.092213818555443
+      ],
+      "bobAngles": [
+        0.9160839844076746,
+        2.583270580218896,
+        4.79067566644531
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2854559123516083,
+        "alice_linear": 0.019288569688796997,
+        "alice_sin1": -0.14690975844860077,
+        "alice_cos1": 0.1255606710910797,
+        "bob_linear": -0.058268532156944275,
+        "bob_sin1": -0.16323673725128174,
+        "bob_cos1": 0.1704334318637848
+      },
+      "nominalInfoNats": 3.5828094482421875,
+      "nominalApproxPower": 0.9506472945213318,
+      "robustMedianPower": 0.8518123030662537,
+      "robustP10Power": 0.12091314047574997,
+      "robustP01Power": 0.0019031187985092402,
+      "fractionDevicesPowerAtLeast90": 0.4470481872558594,
+      "robustMeanWin": 0.8765255808830261,
+      "score": -67.54488974931361,
+      "exactCenterMeanWin": 0.8826973032171974,
+      "exactCenterCertificationPower": 0.9487966648585354,
+      "aliceAngles": [
+        -0.03645585477352142,
+        1.761659227791528,
+        4.129798065634168
+      ],
+      "bobAngles": [
+        0.895028695794832,
+        2.5341379569449107,
+        4.8529988497621535
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2563464343547821,
+        "alice_linear": -0.08691248297691345,
+        "alice_sin1": -0.1345583200454712,
+        "alice_cos1": 0.16320571303367615,
+        "bob_linear": -0.034778326749801636,
+        "bob_sin1": -0.11196356266736984,
+        "bob_cos1": 0.17173337936401367
+      },
+      "nominalInfoNats": 3.578573226928711,
+      "nominalApproxPower": 0.944184422492981,
+      "robustMedianPower": 0.8391880393028259,
+      "robustP10Power": 0.12089058756828308,
+      "robustP01Power": 0.0021899568382650614,
+      "fractionDevicesPowerAtLeast90": 0.4336967468261719,
+      "robustMeanWin": 0.8760902285575867,
+      "score": -67.55129130951863,
+      "exactCenterMeanWin": 0.8822206134993832,
+      "exactCenterCertificationPower": 0.9423607558787792,
+      "aliceAngles": [
+        0.12194497883319855,
+        1.7680881052490318,
+        4.008632571565184
+      ],
+      "bobAngles": [
+        0.8582836988895052,
+        2.5633371159187255,
+        4.816880470698426
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2895676791667938,
+        "alice_linear": 0.0074433982372283936,
+        "alice_sin1": -0.1786843240261078,
+        "alice_cos1": 0.13761897385120392,
+        "bob_linear": -0.15990468859672546,
+        "bob_sin1": -0.14079667627811432,
+        "bob_cos1": 0.09288635849952698
+      },
+      "nominalInfoNats": 3.5812597274780273,
+      "nominalApproxPower": 0.951235294342041,
+      "robustMedianPower": 0.8520264625549316,
+      "robustP10Power": 0.1197836697101593,
+      "robustP01Power": 0.0018250896828249097,
+      "fractionDevicesPowerAtLeast90": 0.4475135803222656,
+      "robustMeanWin": 0.8765168190002441,
+      "score": -67.66153977182532,
+      "exactCenterMeanWin": 0.8827026500754194,
+      "exactCenterCertificationPower": 0.9494001426950615,
+      "aliceAngles": [
+        -0.014608263969421387,
+        1.7260566120195373,
+        4.137385440379281
+      ],
+      "bobAngles": [
+        0.9211736622779482,
+        2.594401039899867,
+        4.772758450546859
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.28825023770332336,
+        "alice_linear": -0.10619623959064484,
+        "alice_sin1": -0.15819375216960907,
+        "alice_cos1": 0.04833180084824562,
+        "bob_linear": -0.12963362038135529,
+        "bob_sin1": -0.170664444565773,
+        "bob_cos1": 0.06920294463634491
+      },
+      "nominalInfoNats": 3.5780043601989746,
+      "nominalApproxPower": 0.9510198831558228,
+      "robustMedianPower": 0.8533809185028076,
+      "robustP10Power": 0.11931419372558594,
+      "robustP01Power": 0.0017740812618285418,
+      "fractionDevicesPowerAtLeast90": 0.44887542724609375,
+      "robustMeanWin": 0.8766167163848877,
+      "score": -67.70999648046819,
+      "exactCenterMeanWin": 0.8827617752664372,
+      "exactCenterCertificationPower": 0.9491574337733621,
+      "aliceAngles": [
+        0.010402921587228775,
+        1.7891042750185502,
+        4.051302754018823
+      ],
+      "bobAngles": [
+        0.8665604594676607,
+        2.579717780008263,
+        4.840078751053545
+      ]
+    },
+    {
+      "family": "fourier1",
+      "n": 3,
+      "shotsPerQuestion": 181,
+      "cost": 3.5376000000000003,
+      "coefficients": {
+        "relative_offset": -0.2907550632953644,
+        "alice_linear": -0.0077391862869262695,
+        "alice_sin1": -0.146498441696167,
+        "alice_cos1": 0.1259968876838684,
+        "bob_linear": -0.05905871093273163,
+        "bob_sin1": -0.14259059727191925,
+        "bob_cos1": 0.13398784399032593
+      },
+      "nominalInfoNats": 3.5797293186187744,
+      "nominalApproxPower": 0.9517607688903809,
+      "robustMedianPower": 0.8550881147384644,
+      "robustP10Power": 0.11902588605880737,
+      "robustP01Power": 0.0017248853109776974,
+      "fractionDevicesPowerAtLeast90": 0.4506034851074219,
+      "robustMeanWin": 0.87666255235672,
+      "score": -67.73911527442706,
+      "exactCenterMeanWin": 0.8828165621299281,
+      "exactCenterCertificationPower": 0.9498974902560089,
+      "aliceAngles": [
+        -0.011641457676887512,
+        1.7591477547798653,
+        4.099546415133562
+      ],
+      "bobAngles": [
+        0.8620228621690386,
+        2.5728904080657355,
+        4.855200958682756
+      ]
+    }
+  ]
+}
