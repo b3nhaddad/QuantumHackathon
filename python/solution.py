@@ -83,7 +83,7 @@ from game_numbers import (  # noqa: E402
 # Your team's chosen name, underscored with the number the organizers assigned
 # you. The same identifier names your branch, your row in the spend ledger and
 # your folder in the results database, so it has to match all three.
-TEAM = "your_team_name_00"
+TEAM = "your_team_name_10"
 
 # Which of your two hardware runs this is, 1 or 2.
 RUN = 1
@@ -99,6 +99,8 @@ N = 13
 # count that certifies with 90% probability at the deficit you declared below.
 # Buying the bare minimum instead puts the expected outcome exactly at the gate
 # and fails about half the time.
+
+#Ben: i believe we can calculate this number explicitly as to not use extra compute per shot
 SHOTS = 53
 
 # Pauli-twirled circuit variants per question. 1 submits your circuit exactly
