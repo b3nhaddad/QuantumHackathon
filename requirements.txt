@@ -2,3 +2,4 @@ pennylane
 pytest
 pennylane-lightning
 pennylane-lightning-gpu
+numpy
