@@ -12,12 +12,16 @@ import pennylane as qml
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from game_numbers import PUBLISHED_READOUT
-from solution import build_circuits, is_win, question_order, strategy_angle
+from solution import N, SHOTS, build_circuits, is_win, question_order, strategy_angle
 
-# Noise needs density matrices, not statevectors, so this device is fixed
-# regardless of what load.get_device picked for the noiseless run.
-def noisy_device(wires: int, shots=None):
-    return qml.device("default.mixed", wires=wires, shots=shots)
+# Noise needs density matrices, not statevectors, so this device is always
+# "default.mixed" regardless of what solution.py's own DEVICE parameter says:
+# that parameter picks where the noiseless submission runs (simulator or
+# qbraid hardware), which is a different question from what simulates a
+# noise channel here. N and SHOTS are still solution's, so a sweep size or
+# shot budget can never drift between the two files.
+def noisy_device(wires: int):
+    return qml.device("default.mixed", wires=wires)
 
 
 def bit_flip(p: float, wires):
@@ -76,7 +80,7 @@ def game_win_rate(dev, questions, circuits, channel) -> float:
             noisy()
             return qml.probs(wires=[0, 1])
 
-        probs = circuit()
+        probs = qml.set_shots(circuit, shots=SHOTS)()
         win_rates.append(sum(
             probs[2 * a + b]
             for a in (0, 1)
@@ -87,7 +91,7 @@ def game_win_rate(dev, questions, circuits, channel) -> float:
 
 
 if __name__ == "__main__":
-    n = 13
+    n = N
     dev = noisy_device(wires=2)
     questions = question_order(n)
     circuits = build_circuits(n, strategy_angle(n))
