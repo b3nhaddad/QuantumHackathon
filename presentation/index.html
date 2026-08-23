@@ -84,20 +84,19 @@
 
     <section class="slide" data-title="The deficit" aria-hidden="true">
       <div class="eyebrow">The decision variable</div>
-      <h2>The declared device deficit determines the feasible cycle size.</h2>
-      <div class="delta-stage">
+      <h2>A small change in device deficit can move the affordable cycle frontier.</h2>
+      <div class="deficit-layout">
         <div class="delta-copy">
           <div class="equation"><span>δ</span> = ω<sub>q</sub> − ω<sub>hardware</sub></div>
-          <p>Device deficit compresses the advantage we can spend on noise and statistical uncertainty.</p>
+          <p>Device deficit compresses the quantum advantage available for statistical certification.</p>
+          <div class="callout coral"><strong>A planning assumption.</strong> The checker confirms that the run is sized consistently; the hardware result determines whether the assumed deficit is accurate.</div>
         </div>
-        <div class="margin-bar" aria-label="Quantum-to-classical margin and declared device deficit">
-          <div class="scale"><span>ω<sub>c</sub><b>0.954545</b></span><span>ω<sub>q</sub><b>0.994911</b></span></div>
-          <div class="advantage"><span class="remaining"></span><span class="deficit"></span></div>
-          <div class="bar-labels"><span>remaining edge<br><b>0.009465</b></span><span>declared δ<br><b>0.030900</b></span></div>
-        </div>
+        <figure class="chart-frame frontier-chart">
+          <img src="images/emerald_affordable_frontier.png" alt="Chart showing that higher device noise deficit lowers the maximum feasible cycle size while increasing the required shots per circuit.">
+          <figcaption>Emerald affordability model: higher δ lowers feasible n and raises the shot requirement.</figcaption>
+        </figure>
       </div>
-      <div class="callout coral"><strong>A planning assumption.</strong> The checker confirms that the run is sized consistently; the hardware result determines whether the assumed deficit is accurate.</div>
-      <aside class="source">Source: Challenge Instructions §5; Plan A plan_check output</aside>
+      <aside class="source">Source: team affordable-frontier analysis; Challenge Instructions §5</aside>
     </section>
 
     <section class="slide" data-title="Model discipline" aria-hidden="true">
@@ -166,15 +165,20 @@
 
     <section class="slide" data-title="Tradeoffs" aria-hidden="true">
       <div class="eyebrow">Design choices</div>
-      <h2>Plan A prioritizes certification power over optional features.</h2>
-      <div class="choices">
-        <div class="choice"><span class="num">01</span><div><strong>Single-run allocation</strong><p>No paid calibration run; the available budget is assigned to the C<sub>11</sub> attempt.</p></div></div>
-        <div class="choice"><span class="num">02</span><div><strong>Textbook-optimal angles</strong><p>No perturbation outperformed the simple local strategy with defensible power.</p></div></div>
-        <div class="choice"><span class="num">03</span><div><strong>No paid twirl variants</strong><p>The model did not provide evidence that extra task fees would improve certification power.</p></div></div>
-        <div class="choice"><span class="num">04</span><div><strong>Emerald selected</strong><p>Its lower observed readout error outweighed the slightly higher per-shot price.</p></div></div>
+      <h2>Emerald stays above the 90% power target at C<sub>11</sub>.</h2>
+      <div class="qpu-chart-layout">
+        <figure class="chart-frame qpu-chart">
+          <img src="images/qpu_certification_power.png" alt="Chart comparing maximum certification power by odd-cycle size under the twenty dollar budget, with Emerald exceeding Garnet and the 90 percent target through C11.">
+          <figcaption>Maximum modeled certification power under the $20 budget cap.</figcaption>
+        </figure>
+        <div class="chart-reading">
+          <p class="label">Interpretation</p>
+          <p><strong>Emerald remains above the 90% sizing target at C<sub>11</sub>.</strong> Under the same budget, Garnet falls below that threshold before the proposed cycle.</p>
+          <p>Plan A therefore assigns the budget to one Emerald run using textbook angles and one circuit variant per question.</p>
+        </div>
       </div>
-      <div class="risk-line"><span>Benefit</span><b>maximum affordable evidence at C<sub>11</sub></b><i></i><b>no second run if δ is higher than estimated</b><span>Constraint</span></div>
-      <aside class="source">Source: solution.py; README.md; Challenge Instructions §5</aside>
+      <div class="design-strip"><span>Single run</span><i></i><span>Textbook angles</span><i></i><span>One variant / question</span><i></i><span>Emerald</span></div>
+      <aside class="source">Source: team QPU certification-power analysis; README.md; Challenge Instructions §5</aside>
     </section>
 
     <section class="slide closing-slide" data-title="Hardware decides" aria-hidden="true">
