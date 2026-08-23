@@ -26,8 +26,8 @@ Narrative arc (9 slides / approximately 5 minutes)
    the identical circuit structure across all 2n questions.
 
 4. The declared device deficit determines the feasible cycle size
-   Define the device deficit delta and show how it consumes the quantum-to-
-   classical margin. Make clear that delta is our declared assumption.
+   Define device deficit delta and use the affordable-frontier chart to show
+   how it reduces feasible cycle size while raising the shot requirement.
 
 5. Asymmetric readout moved the viable target from C_13 to C_11
    Contrast the earlier optimistic delta assumptions with asymmetric Emerald
@@ -42,10 +42,9 @@ Narrative arc (9 slides / approximately 5 minutes)
    Compare the C_11 largest-cycle bet with the lower-cost C_9 design-efficiency
    alternative and the shot-heavy C_5 nonlocal-content chase.
 
-8. Plan A prioritizes certification power over optional features
-   Explain the strategic choices: no paid calibration run, no twirl task fees,
-   textbook-optimal angles, and Emerald over Garnet for the lower observed
-   readout error despite its higher per-shot price.
+8. Emerald stays above the 90% power target at C_11
+   Use the QPU power chart to show why Emerald is selected, then summarize the
+   single-run, textbook-angle, and one-variant choices.
 
 9. The hardware result will test the noise estimate
    Close on the measurable standard: expected 0.964011 win rate versus the
