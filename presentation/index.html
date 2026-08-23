@@ -177,6 +177,56 @@
       <aside class="source">Source: team QPU certification-power analysis; README.md; Challenge Instructions §5</aside>
     </section>
 
+    <section class="slide" data-title="Chirality test" aria-hidden="true">
+      <div class="eyebrow">Hardware limitations</div>
+      <h2>The chirality test was inconclusive on today's hardware.</h2>
+      <div class="evidence-layout">
+        <div class="observed">
+          <p class="label">What we assumed</p>
+          <p>A fixed, uniform gate error rate we could calibrate the test against, independent of which physical qubits the circuit lands on.</p>
+        </div>
+        <div class="assumed">
+          <p class="label">What we actually have</p>
+          <p>No calibrated, low-noise hardware access. Gate fidelity varies by physical qubit and by which qubits a given transpiled layout pairs together — a stochastic effect we can't currently isolate from a genuine chirality signal.</p>
+        </div>
+        <div class="rejection">
+          <div class="stamp">N/A</div>
+          <div>
+            <strong>Result: inconclusive, not negative.</strong>
+            <p>Different qubit-to-qubit mappings for the same logical circuit could shift the measured asymmetry enough to flip a marginal call. Until we can run on hardware with known, stable per-qubit and per-gate error rates — or average over enough mappings to bound that variance — this test can't distinguish a real chirality effect from mapping-dependent noise.</p>
+          </div>
+        </div>
+      </div>
+      <p class="takeaway wide">Next step: repeat across multiple qubit-configuration/transpilation choices on the same device to bound how much of the observed effect is hardware placement rather than physics.</p>
+      <aside class="source">Source: team chirality-test analysis; hardware run logs</aside>
+    </section>
+
+    <section class="slide" data-title="Neural network tuning" aria-hidden="true">
+      <div class="eyebrow">Model tuning</div>
+      <h2>The cost/shots/N optimization is not yet trustworthy.</h2>
+      <div class="model-pivot">
+        <div class="old-model">
+          <p class="label">What we tried</p>
+          <strong>NN search</strong>
+          <p>Trained a network to jointly tune cost, shots per circuit, and N against our error-simulation model.</p>
+          <span>Optimizes against the simulator, not hardware</span>
+        </div>
+        <div class="pivot-arrow" aria-hidden="true">→</div>
+        <div class="readout-model">
+          <p class="label">Why we don't trust the result yet</p>
+          <p>The error simulator's own accuracy against real hardware is unknown. The network optimized tightly to that simulator's noise surface, so it likely overfit to simulation artifacts rather than to noise behavior that holds in practice.</p>
+        </div>
+      </div>
+      <div class="scenario-table" role="table" aria-label="Optimization target status">
+        <div class="scenario header" role="row"><span>Parameter</span><span>optimized in sim</span><span>validated on hardware</span><span>status</span></div>
+        <div class="scenario" role="row"><span><b>Cost</b></span><span>Yes</span><span>No</span><span class="bad">Unverified</span></div>
+        <div class="scenario" role="row"><span><b>Shots</b></span><span>Yes</span><span>No</span><span class="bad">Unverified</span></div>
+        <div class="scenario" role="row"><span><b>N</b></span><span>Yes</span><span>No</span><span class="bad">Unverified</span></div>
+      </div>
+      <p class="scenario-foot">A parameter set that minimizes cost under the simulated error model is not the same as one that minimizes cost under real device noise — the gap between the two is exactly the simulator's unknown accuracy.</p>
+      <aside class="source">Source: team NN cost/shots/N optimization runs; noise_model.py</aside>
+    </section>
+
     <section class="slide closing-slide" data-title="Hardware decides" aria-hidden="true">
       <div class="eyebrow">The standard</div>
       <h2>The hardware result will test the noise estimate.</h2>
