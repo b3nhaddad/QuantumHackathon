@@ -166,7 +166,7 @@ DELTA = 0.015
 # this file and a device can be swapped for its fallback without touching a
 # single submission. `check_environment` below stops a "qbraid" run whose
 # environment carries no route or no credential before the first shot.
-DEVICE = "default.qubit"
+DEVICE = "default.mixed"
 
 # Everything above is read once, before your code runs, and the run is executed
 # from that snapshot. Reassigning any of it later changes nothing except that the

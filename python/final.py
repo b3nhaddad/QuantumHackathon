@@ -1,7 +1,7 @@
 TEAM = "your_team_name_10"
 RUN = 1
-N = 21
-SHOTS = 110
+N = 19
+SHOTS = 141
 TWIRLS = 1
 QPU = "emerald"
 DELTA = 0.015
