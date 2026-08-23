@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Qupacabrathon 2026 Plan A: a proposed C11 odd-cycle certification experiment on IQM Emerald.">
+  <title>C₁₁ run plan — Qupacabrathon 2026</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="deck" aria-live="polite">
+    <section class="slide title-slide is-active" data-title="C11 run plan" aria-hidden="false">
+      <div class="eyebrow">Qupacabrathon 2026 · Proposed experiment</div>
+      <div class="title-layout">
+        <div>
+          <h1><em>C<sub>11</sub></em> run<br>plan</h1>
+          <p class="lede">An Emerald experiment with 22 circuits, 380 shots per circuit, and a 3σ certification target within the $20 limit.</p>
+        </div>
+        <div class="cycle-mark" aria-hidden="true">
+          <span>11</span>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <p class="status-line"><span></span>Pre-hardware analysis · Emerald · no hardware result yet</p>
+      <footer>Team presentation · 2026</footer>
+    </section>
+
+    <section class="slide" data-title="The odd-cycle game" aria-hidden="true">
+      <div class="eyebrow">The challenge</div>
+      <h2>Odd-cycle correlations create a measurable quantum advantage.</h2>
+      <div class="split">
+        <div class="cycle-demo" aria-label="Odd cycle with one unavoidable classical conflict">
+          <svg viewBox="0 0 420 420" role="img" aria-label="Eleven-node cycle with one conflicting edge">
+            <polygon points="210,28 316,61 384,151 396,262 347,360 249,408 139,389 54,317 20,210 54,103 139,31" />
+            <line class="conflict" x1="139" y1="31" x2="210" y2="28" />
+            <g class="nodes">
+              <circle cx="210" cy="28" r="13"/><circle cx="316" cy="61" r="13"/><circle cx="384" cy="151" r="13"/>
+              <circle cx="396" cy="262" r="13"/><circle cx="347" cy="360" r="13"/><circle cx="249" cy="408" r="13"/>
+              <circle cx="139" cy="389" r="13"/><circle cx="54" cy="317" r="13"/><circle cx="20" cy="210" r="13"/>
+              <circle cx="54" cy="103" r="13"/><circle cx="139" cy="31" r="13"/>
+            </g>
+          </svg>
+          <p>An odd cycle cannot be colored with two colors without one contradiction.</p>
+        </div>
+        <div class="bound-story">
+          <div class="bound classical">
+            <span>Classical ceiling</span>
+            <strong>95.4545%</strong>
+            <small>ω<sub>c</sub> = 1 − 1/(2n)</small>
+          </div>
+          <div class="versus">vs.</div>
+          <div class="bound quantum">
+            <span>Ideal quantum value</span>
+            <strong>99.4911%</strong>
+            <small>ω<sub>q</sub> = cos²(π/4n)</small>
+          </div>
+          <p class="takeaway">A result is certified only when the hardware evidence clears the classical ceiling using the one-sided exact 3σ test.</p>
+        </div>
+      </div>
+      <aside class="source">Source: Challenge Instructions §§2, 7–8; game_numbers.py</aside>
+    </section>
+
+    <section class="slide" data-title="Circuit strategy" aria-hidden="true">
+      <div class="eyebrow">The strategy</div>
+      <h2>The same local circuit structure covers all 22 questions.</h2>
+      <div class="circuit">
+        <div class="wire-label">Alice</div><div class="wire"></div>
+        <div class="wire-label bob">Bob</div><div class="wire bob-wire"></div>
+        <div class="gate hadamard">H</div>
+        <div class="gate control">●</div>
+        <div class="gate target">⊕</div>
+        <div class="gate rotate a">Rᵧ(Aₓ)</div>
+        <div class="gate rotate b">Rᵧ(Bᵧ)</div>
+        <div class="measure m1">M</div><div class="measure m2">M</div>
+      </div>
+      <div class="formula-row">
+        <div><span>Prepare</span><strong>|Φ⁺⟩</strong><small>H + CNOT</small></div>
+        <div><span>Rotate locally</span><strong>A<sub>x</sub>, B<sub>y</sub></strong><small>Each angle depends only on that player's question</small></div>
+        <div><span>Measure</span><strong>2n = 22</strong><small>11 same-vertex + 11 edge questions</small></div>
+      </div>
+      <p class="takeaway wide">Every question uses the same four-gate structure; only Alice’s and Bob’s local rotation angles change.</p>
+      <aside class="source">Source: solution.py::build_circuits and question_order</aside>
+    </section>
+
+    <section class="slide" data-title="The deficit" aria-hidden="true">
+      <div class="eyebrow">The decision variable</div>
+      <h2>The declared device deficit determines the feasible cycle size.</h2>
+      <div class="delta-stage">
+        <div class="delta-copy">
+          <div class="equation"><span>δ</span> = ω<sub>q</sub> − ω<sub>hardware</sub></div>
+          <p>Device deficit compresses the advantage we can spend on noise and statistical uncertainty.</p>
+        </div>
+        <div class="margin-bar" aria-label="Quantum-to-classical margin and declared device deficit">
+          <div class="scale"><span>ω<sub>c</sub><b>0.954545</b></span><span>ω<sub>q</sub><b>0.994911</b></span></div>
+          <div class="advantage"><span class="remaining"></span><span class="deficit"></span></div>
+          <div class="bar-labels"><span>remaining edge<br><b>0.009465</b></span><span>declared δ<br><b>0.030900</b></span></div>
+        </div>
+      </div>
+      <div class="callout coral"><strong>A planning assumption.</strong> The checker confirms that the run is sized consistently; the hardware result determines whether the assumed deficit is accurate.</div>
+      <aside class="source">Source: Challenge Instructions §5; Plan A plan_check output</aside>
+    </section>
+
+    <section class="slide" data-title="Model discipline" aria-hidden="true">
+      <div class="eyebrow">Noise analysis</div>
+      <h2>Asymmetric readout moved the viable target from C<sub>13</sub> to C<sub>11</sub>.</h2>
+      <div class="model-pivot">
+        <div class="old-model">
+          <p class="label">Earlier estimate</p>
+          <strong>δ = 0.015</strong>
+          <p>or a symmetric 1% bit-flip rate</p>
+          <span>Made C<sub>13</sub> appear affordable</span>
+        </div>
+        <div class="pivot-arrow" aria-hidden="true">→</div>
+        <div class="readout-model">
+          <p class="label">Organizer observations · Emerald</p>
+          <div class="metric-pair"><div><span>true 0 → 1</span><strong>0.13%</strong></div><div><span>true 1 → 0</span><strong>2.80%</strong></div></div>
+          <p>Asymmetric readout affects either qubit, so the game deficit is larger than the 1.465% raw mean.</p>
+        </div>
+      </div>
+      <div class="scenario-table" role="table" aria-label="Modeled certification power comparison">
+        <div class="scenario header" role="row"><span>Scenario</span><span>δ at C<sub>11</sub></span><span>C<sub>11</sub> power</span><span>C<sub>13</sub> power*</span></div>
+        <div class="scenario" role="row"><span><b>Readout only</b><small>measured inputs</small></span><span>0.02858</span><span class="good">99.38%</span><span class="bad">43.7%</span></div>
+        <div class="scenario" role="row"><span><b>+ 99.5% visibility</b><small>conservative assumption</small></span><span>0.03091</span><span class="good">90.62%</span><span class="bad">9.9%</span></div>
+      </div>
+      <p class="scenario-foot">*C<sub>13</sub> uses the maximum affordable 293 shots per circuit. Ninety-percent power would cost roughly $34.88–$79.60.</p>
+      <aside class="source">Source: noise_model.py; run1 search outputs; team analysis brief</aside>
+    </section>
+
+    <section class="slide" data-title="Plan A" aria-hidden="true">
+      <div class="eyebrow">Selected run</div>
+      <h2 class="plan-title">C<sub>11</sub> meets the power and budget criteria.</h2>
+      <div class="hero-metric">
+        <span>modeled certification power</span>
+        <strong>91%</strong>
+        <small>at declared δ = 0.0309</small>
+      </div>
+      <div class="run-ledger">
+        <div><span>cycle</span><strong>C<sub>11</sub></strong></div>
+        <div><span>circuits</span><strong>22</strong></div>
+        <div><span>shots / circuit</span><strong>380</strong></div>
+        <div><span>total shots</span><strong>8,360</strong></div>
+        <div><span>twirls</span><strong>1</strong></div>
+        <div class="cost"><span>total cost</span><strong>$19.976</strong></div>
+      </div>
+      <div class="budget-line"><span style="width:99.88%"></span><b>$0</b><b>$20 cap</b></div>
+      <p class="takeaway wide">The 90%-power minimum is 377 shots per circuit. The proposed 380-shot plan leaves $0.024 in the budget and 0.0001 of modeled deficit headroom.</p>
+      <aside class="source">Source: plan_check.py output for n=11, shots=380, δ=0.0309, Emerald</aside>
+    </section>
+
+    <section class="slide" data-title="Award strategy" aria-hidden="true">
+      <div class="eyebrow">Award strategy</div>
+      <h2>The award objectives favor different run designs.</h2>
+      <div class="award-lines">
+        <div class="award selected"><span>Largest certified n</span><strong>C<sub>11</sub> · 380 shots</strong><b>$19.976</b><i>Selected</i></div>
+        <div class="award"><span>Best-designed experiment</span><strong>C<sub>9</sub> · 161 shots</strong><b>≈ $10.04</b><i>Alternative</i></div>
+        <div class="award"><span>Largest nonlocal content</span><strong>C<sub>5</sub> · 1,062 shots</strong><b>$19.992</b><i>Different objective</i></div>
+      </div>
+      <div class="award-note">
+        <strong>Our primary target</strong>
+        <p>Largest certified cycle, with a plausible design-efficiency score near 1.005 if the conservative deficit is accurate.</p>
+        <strong>What we are not optimizing</strong>
+        <p>At C<sub>11</sub>, predicted certified nonlocal content is only about 0.064–0.121—well below the CHSH comparison line at 0.41421.</p>
+      </div>
+      <aside class="source">Source: Challenge Instructions §8; team analysis brief</aside>
+    </section>
+
+    <section class="slide" data-title="Tradeoffs" aria-hidden="true">
+      <div class="eyebrow">Design choices</div>
+      <h2>Plan A prioritizes certification power over optional features.</h2>
+      <div class="choices">
+        <div class="choice"><span class="num">01</span><div><strong>Single-run allocation</strong><p>No paid calibration run; the available budget is assigned to the C<sub>11</sub> attempt.</p></div></div>
+        <div class="choice"><span class="num">02</span><div><strong>Textbook-optimal angles</strong><p>No perturbation outperformed the simple local strategy with defensible power.</p></div></div>
+        <div class="choice"><span class="num">03</span><div><strong>No paid twirl variants</strong><p>The model did not provide evidence that extra task fees would improve certification power.</p></div></div>
+        <div class="choice"><span class="num">04</span><div><strong>Emerald selected</strong><p>Its lower observed readout error outweighed the slightly higher per-shot price.</p></div></div>
+      </div>
+      <div class="risk-line"><span>Benefit</span><b>maximum affordable evidence at C<sub>11</sub></b><i></i><b>no second run if δ is higher than estimated</b><span>Constraint</span></div>
+      <aside class="source">Source: solution.py; README.md; Challenge Instructions §5</aside>
+    </section>
+
+    <section class="slide closing-slide" data-title="Hardware decides" aria-hidden="true">
+      <div class="eyebrow">The standard</div>
+      <h2>The hardware result will test the noise estimate.</h2>
+      <div class="finish-line">
+        <div class="rate expected"><span>Expected at our δ</span><strong>0.964011</strong></div>
+        <div class="gap"><span>+0.009465</span><i></i><small>statistical room above classical</small></div>
+        <div class="rate ceiling"><span>Classical ceiling</span><strong>0.954545</strong></div>
+      </div>
+      <div class="after-run"><span>Counts return</span><i>→</i><span>Recompute wins</span><i>→</i><span>Exact 3σ test</span><i>→</i><strong>Certification result</strong></div>
+      <p class="closing-copy">The returned counts determine whether C<sub>11</sub> clears the 3σ threshold.</p>
+      <p class="status-line"><span></span>Current status: submission candidate validated by the plan checker; no hardware claim yet.</p>
+      <aside class="source">Source: Plan A plan_check output; Challenge Instructions §§7–8</aside>
+    </section>
+  </main>
+
+  <nav class="controls" aria-label="Presentation controls">
+    <button class="nav-button" id="prev" type="button" aria-label="Previous slide">←</button>
+    <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+    <span class="counter"><b id="currentSlide">1</b> / <span id="totalSlides">9</span></span>
+    <button class="nav-button" id="next" type="button" aria-label="Next slide">→</button>
+  </nav>
+  <p class="key-hint">Use ← →, space, or click</p>
+  <script src="presentation.js"></script>
+</body>
+</html>
