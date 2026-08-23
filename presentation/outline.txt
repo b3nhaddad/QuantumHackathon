@@ -1,9 +1,9 @@
 Qupacabrathon 2026 — presentation plan
 
 Communication job
-By the end, judges should understand why our C_11 one-shot plan is a deliberate,
-evidence-backed trade under the $20 cap—and exactly what the hardware run must
-demonstrate to certify the result.
+By the end, judges should understand why our C_21 one-shot plan is a deliberate,
+budget-constrained trade—and that it has 67% modeled certification power at the
+declared deficit rather than a 90% guarantee.
 
 Audience
 Qupacabrathon judges, mentors, and technically curious teams.
@@ -14,14 +14,14 @@ evaluate. This is a pre-hardware deck; it does not claim a hardware result.
 
 Narrative arc (9 slides / approximately 5 minutes)
 
-1. C_11 run plan
+1. C_21 run plan
    Introduce the proposed Emerald experiment and the pre-hardware status.
 
 2. Odd-cycle correlations create a measurable quantum advantage
    Explain the odd-cycle game, the classical ceiling, and why a statistically
    certified quantum advantage matters more than a simulated win rate.
 
-3. The same local circuit structure covers all 22 questions
+3. The same local circuit structure covers all 42 questions
    Show the Bell-pair preparation and local rotations. Emphasize locality and
    the identical circuit structure across all 2n questions.
 
@@ -29,26 +29,26 @@ Narrative arc (9 slides / approximately 5 minutes)
    Define device deficit delta and use the affordable-frontier chart to show
    how it reduces feasible cycle size while raising the shot requirement.
 
-5. Asymmetric readout moved the viable target from C_13 to C_11
-   Contrast the earlier optimistic delta assumptions with asymmetric Emerald
-   readout. Show both current scenarios and explain that the corrected search
-   rejected C_13 rather than labeling a low-power candidate a winner.
+5. C_21 fits the cap, but the 90% sizing target does not
+   Contrast the submitted 110 shots per circuit with the 165 required for 90%
+   certification power at δ = 0.0150. Make the budget/power trade explicit.
 
-6. C_11 meets the power and budget criteria
-   Present the complete run plan: 22 circuits, 380 shots each, 8,360 shots,
-   $19.976, 91% certification power, and 0.0001 deficit headroom.
+6. C_21 fits the budget with a meaningful certification risk
+   Present the complete run plan: 42 circuits, 110 shots each, 4,620 shots,
+   $19.99, 67% certification power, and a $0.01 budget remainder.
 
 7. The award objectives favor different run designs
-   Compare the C_11 largest-cycle bet with the lower-cost C_9 design-efficiency
-   alternative and the shot-heavy C_5 nonlocal-content chase.
+   Compare the submitted C_21 plan with the unaffordable 90%-power C_21 sizing
+   target and identify the deliberate risk choice.
 
-8. Emerald stays above the 90% power target at C_11
+8. Emerald maximizes power under the cap, even though C_21 remains below 90%
    Use the QPU power chart to show why Emerald is selected, then summarize the
-   single-run, textbook-angle, and one-variant choices.
+   single-run, textbook-angle, and one-variant choices with the caveat that the
+   C_21 shot count is below the 90% sizing target.
 
 9. The hardware result will test the noise estimate
-   Close on the measurable standard: expected 0.964011 win rate versus the
-   0.954545 classical bound, certified at 3 sigma. State the post-run analysis
+   Close on the measurable standard: expected 0.983602 win rate versus the
+   0.976190 classical bound, certified at 3 sigma. State the post-run analysis
    path and the honest current status.
 
 Visual direction
