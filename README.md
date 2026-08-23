@@ -9,3 +9,5 @@
 pennylane: https://pennylane.ai/demos/tutorial_how_to_use_noise_models
 <br></br>
 link: https://qupacabrathon.dev/
+
+<i>Non-copyright 2026</i>
