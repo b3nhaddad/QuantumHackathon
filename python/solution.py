@@ -90,7 +90,7 @@ RUN = 1
 
 # Cycle size. Odd and at least 3. This is the competition axis: a better run
 # shows up as a larger certified n, not as a third decimal place.
-N = 31
+N = 21
 
 # Shots per circuit. Every one of the 2n circuits gets exactly this many, and
 # the verifier rejects a submission where they differ. Size it with
@@ -101,7 +101,7 @@ N = 31
 # and fails about half the time.
 
 #Ben: i believe we can calculate this number explicitly as to not use extra compute per shot
-SHOTS = 14
+SHOTS = 110
 
 # Pauli-twirled circuit variants per question. 1 submits your circuit exactly
 # as you wrote it. At k > 1, each question is submitted as k variants, each
@@ -179,80 +179,21 @@ DEVICE = "default.qubit"
 # ==========================================================================
 
 
-def build_circuits(n: int, theta: float) -> list[Callable[[], None]]:
-    if n != 31:
-        raise ValueError(f"precomputed strategy is for C_31, got C_{n}")
-    # theta is intentionally unused: all requested angles were compiled offline.
-    alice_angles = (
-        +0,
-        +3.0402509550868966,
-        +6.0805019101737932,
-        +9.1207528652606893,
-        +12.161003820347586,
-        +15.201254775434483,
-        +18.241505730521379,
-        +21.281756685608276,
-        +24.322007640695173,
-        +27.36225859578207,
-        +30.402509550868967,
-        +33.44276050595586,
-        +36.483011461042757,
-        +39.523262416129654,
-        +42.563513371216551,
-        +45.603764326303448,
-        +48.644015281390345,
-        +51.684266236477242,
-        +54.724517191564139,
-        +57.764768146651036,
-        +60.805019101737933,
-        +63.84527005682483,
-        +66.88552101191172,
-        +69.925771966998624,
-        +72.966022922085514,
-        +76.006273877172418,
-        +79.046524832259308,
-        +82.086775787346212,
-        +85.127026742433102,
-        +88.167277697520007,
-        +91.207528652606896,
-    )
-    bob_angles = (
-        +0.050670849251448276,
-        +3.0909218043383451,
-        +6.1311727594252412,
-        +9.1714237145121373,
-        +12.211674669599034,
-        +15.251925624685931,
-        +18.292176579772828,
-        +21.332427534859725,
-        +24.372678489946622,
-        +27.412929445033519,
-        +30.453180400120416,
-        +33.493431355207306,
-        +36.533682310294203,
-        +39.5739332653811,
-        +42.614184220467997,
-        +45.654435175554894,
-        +48.694686130641792,
-        +51.734937085728689,
-        +54.775188040815586,
-        +57.815438995902483,
-        +60.85568995098938,
-        +63.895940906076277,
-        +66.936191861163167,
-        +69.976442816250071,
-        +73.016693771336961,
-        +76.056944726423865,
-        +79.097195681510755,
-        +82.137446636597659,
-        +85.177697591684549,
-        +88.217948546771453,
-        +91.258199501858343,
-    )
+def build_circuits(
+    n: int,
+    theta: float,
+) -> list[Callable[[], None]]:
 
-    def gates_for(x: int, y: int) -> Callable[[], None]:
-        angle_a = alice_angles[x]
-        angle_b = bob_angles[y]
+    step = math.pi - 4.0 * theta
+    bob_offset = 2.0 * theta
+
+    def gates_for(
+        x: int,
+        y: int,
+    ) -> Callable[[], None]:
+
+        angle_a = x * step
+        angle_b = y * step + bob_offset
 
         def circuit() -> None:
             qml.Hadamard(wires=0)
@@ -262,7 +203,11 @@ def build_circuits(n: int, theta: float) -> list[Callable[[], None]]:
 
         return circuit
 
-    return [gates_for(x, y) for x, y in question_order(n)]
+    return [
+        gates_for(x, y)
+        for x, y in question_order(n)
+    ]
+
 
 # ==========================================================================
 # FIXED. Do not edit below this line.
