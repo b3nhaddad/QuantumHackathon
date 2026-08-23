@@ -162,7 +162,7 @@
 
     <section class="slide" data-title="Tradeoffs" aria-hidden="true">
       <div class="eyebrow">Design choices</div>
-      <h2>Emerald maximizes power under the cap, even though C<sub>21</sub> remains below 90%.</h2>
+      <h2>Emerald is stronger—but C<sub>21</sub> remains below 90%.</h2>
       <div class="qpu-chart-layout">
         <figure class="chart-frame qpu-chart">
           <img src="images/qpu_certification_power.png" alt="Chart comparing modeled certification power by odd-cycle size under the twenty dollar budget, with Emerald exceeding Garnet at the same budget.">
@@ -170,11 +170,10 @@
         </figure>
         <div class="chart-reading">
           <p class="label">Interpretation</p>
-          <p><strong>Emerald is the stronger option at the same fixed budget.</strong> At C<sub>21</sub>, the submitted shot count still lands below the 90% sizing target.</p>
-          <p>Plan A therefore uses one Emerald run, textbook angles, and one circuit variant per question—with the statistical risk explicit.</p>
+          <p><strong>Emerald leaves more statistical room than Garnet under the same $20 cap.</strong></p>
+          <p>The submitted C<sub>21</sub> plan still reaches only 67% modeled certification power.</p>
         </div>
       </div>
-      <div class="design-strip"><span>Single run</span><i></i><span>Textbook angles</span><i></i><span>One variant / question</span><i></i><span>Emerald</span></div>
       <aside class="source">Source: team QPU certification-power analysis; README.md; Challenge Instructions §5</aside>
     </section>
 
@@ -187,7 +186,7 @@
         <div class="rate ceiling"><span>Classical ceiling</span><strong>0.976190</strong></div>
       </div>
       <div class="after-run"><span>Counts return</span><i>→</i><span>Recompute wins</span><i>→</i><span>Exact 3σ test</span><i>→</i><strong>Certification result</strong></div>
-      <p class="closing-copy">The returned counts determine whether C<sub>21</sub> clears the 3σ threshold.</p>
+      <p class="closing-copy">C<sub>21</sub> must clear the exact 3σ threshold.</p>
       <p class="status-line"><span></span>Current status: submission candidate validated by the plan checker; no hardware claim yet.</p>
       <aside class="source">Source: plan_check.py output for n=21, shots=110, δ=0.0150; Challenge Instructions §§7–8</aside>
     </section>
