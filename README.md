@@ -1,6 +1,6 @@
 # QuantumHackathon
 
-! Benjamin Haddad, Vance John, Aurick Mikleton, Cameron Will, Carter Hickerson
+![ Benjamin Haddad, Vance John, Aurick Mikleton, Cameron Will, Carter Hickerson]
 
 # Resources
 
