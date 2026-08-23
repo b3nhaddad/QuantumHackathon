@@ -1,0 +1,66 @@
+Qupacabrathon 2026 — presentation plan
+
+Communication job
+By the end, judges should understand why our C_11 one-shot plan is a deliberate,
+evidence-backed trade under the $20 cap—and exactly what the hardware run must
+demonstrate to certify the result.
+
+Audience
+Qupacabrathon judges, mentors, and technically curious teams.
+
+Purpose
+Compete for Best Explanation while making the experiment-design choices easy to
+evaluate. This is a pre-hardware deck; it does not claim a hardware result.
+
+Narrative arc (9 slides / approximately 5 minutes)
+
+1. C_11 run plan
+   Introduce the proposed Emerald experiment and the pre-hardware status.
+
+2. Odd-cycle correlations create a measurable quantum advantage
+   Explain the odd-cycle game, the classical ceiling, and why a statistically
+   certified quantum advantage matters more than a simulated win rate.
+
+3. The same local circuit structure covers all 22 questions
+   Show the Bell-pair preparation and local rotations. Emphasize locality and
+   the identical circuit structure across all 2n questions.
+
+4. The declared device deficit determines the feasible cycle size
+   Define the device deficit delta and show how it consumes the quantum-to-
+   classical margin. Make clear that delta is our declared assumption.
+
+5. Asymmetric readout moved the viable target from C_13 to C_11
+   Contrast the earlier optimistic delta assumptions with asymmetric Emerald
+   readout. Show both current scenarios and explain that the corrected search
+   rejected C_13 rather than labeling a low-power candidate a winner.
+
+6. C_11 meets the power and budget criteria
+   Present the complete run plan: 22 circuits, 380 shots each, 8,360 shots,
+   $19.976, 91% certification power, and 0.0001 deficit headroom.
+
+7. The award objectives favor different run designs
+   Compare the C_11 largest-cycle bet with the lower-cost C_9 design-efficiency
+   alternative and the shot-heavy C_5 nonlocal-content chase.
+
+8. Plan A prioritizes certification power over optional features
+   Explain the strategic choices: no paid calibration run, no twirl task fees,
+   textbook-optimal angles, and Emerald over Garnet for the lower observed
+   readout error despite its higher per-shot price.
+
+9. The hardware result will test the noise estimate
+   Close on the measurable standard: expected 0.964011 win rate versus the
+   0.954545 classical bound, certified at 3 sigma. State the post-run analysis
+   path and the honest current status.
+
+Visual direction
+Deep ink background, electric-lime decision accents, cyan quantum accents, and
+warm coral risk accents. Large typography, a single focal composition per slide,
+minimal interface chrome, and CSS-built lines/plots rather than external assets.
+
+Primary project sources
+- QuantumHackathon-noise-accuracy/README.md
+- QuantumHackathon-noise-accuracy/python/solution.py
+- QuantumHackathon-noise-accuracy/python/noise_model.py
+- QuantumHackathon-noise-accuracy/generated_aggressive/run1_search_report.json
+- official-qupacabrathon-2026/scripts/plan_check.py output for Plan A
+- Challenge Instructions, especially sections 5 and 8
